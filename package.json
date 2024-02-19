@@ -1,15 +1,28 @@
 {
   "name": "lib-build",
   "version": "1.0.0",
-  "description": "",
+  "description": "rollup build template",
+  "keywords": [
+    "rollup",
+    "lib",
+    "build",
+    "template"
+  ],
   "main": "./dist/index-es.js",
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c"
   },
-  "author": "",
-  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "author": "xiaobai.li",
+  "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaobaili1992/lib-build.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
@@ -24,5 +37,8 @@
     "antd": "^5.14.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=18.18.0"
   }
 }
