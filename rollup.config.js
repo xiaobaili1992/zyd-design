@@ -1,6 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-// import commonjs from '@rollup/plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 
 export default {
@@ -13,5 +13,5 @@ export default {
     format: 'umd',
     name: 'libBuild'
   }],
-  plugins: [resolve(), babel({ babelHelpers: 'bundled' }), terser()]
+  plugins: [resolve(),  babel({ babelHelpers: 'bundled' }), commonjs(), terser()]
 }

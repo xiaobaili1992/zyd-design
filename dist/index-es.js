@@ -1,1 +1,1 @@
-import{Button as e,Tooltip as t}from"antd";const l=()=>React.createElement(e,{type:"primary"},"Hello World"),r=()=>React.createElement(t,{title:"Hello World!"},React.createElement("div",null,"Hello World!"));export{l as MyButton,r as MyTooltip};
+import e from"react";import{Button as o,Tooltip as l}from"antd";const t=()=>(console.log("MyButton"),e.createElement(o,{type:"primary"},"Hello World")),r=()=>(console.log("MyTooltip"),e.createElement(l,{title:"Hello World!"},e.createElement("div",null,"Hello World!")));export{t as MyButton,r as MyTooltip};
