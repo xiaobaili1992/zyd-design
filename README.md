@@ -5,7 +5,7 @@ yarn global add yalc
 #### 在公共库中使用
 ```
 yarn build // 公共库打包
-yalc public
+yalc publish
 ```
 ### 在实际项目中使用
 ```

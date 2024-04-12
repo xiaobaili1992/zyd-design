@@ -1,5 +1,5 @@
 {
-  "name": "lib-build",
+  "name": "zyd-design",
   "version": "1.0.0",
   "description": "rollup build template",
   "keywords": [
@@ -21,22 +21,26 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xiaobaili1992/lib-build.git"
+    "url": "https://github.com/xiaobaili1992/zyd-design.git"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
-    "@babel/preset-react": "^7.23.3",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.12.0"
+    "@vue/babel-plugin-transform-vue-jsx": "^1.4.0",
+    "@vue/babel-preset-jsx": "^1.4.0",
+    "element-ui": "^2.15.14",
+    "rollup": "^4.12.0",
+    "rollup-plugin-vue": "5.1.9",
+    "vue": "2.6.14",
+    "vue-template-compiler": "2.6.14"
   },
   "peerDependencies": {
-    "antd": "^5.14.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "element-ui": "^2.15.14",
+    "vue": "2.6.14"
   },
   "engines": {
     "node": ">=18.18.0"

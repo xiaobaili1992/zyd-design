@@ -1,7 +1,5 @@
-import MyButton from "./component/Button/index";
-import MyTooltip from "./component/Tooltip/index";
+import Name from './component/Name.vue';
 
 export {
-  MyButton,
-  MyTooltip
-};
+  Name
+}
