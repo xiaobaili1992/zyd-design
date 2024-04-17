@@ -1,5 +1,5 @@
-import Name from './component/Name.vue';
+import ZydPage from './component/ZydPage.vue';
 
 export {
-  Name
+  ZydPage,
 }
