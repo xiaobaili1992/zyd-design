@@ -59,8 +59,10 @@
               class="el-table"
               height="100%"
               ref="myTable"
+              style="width: 100%"
+              max-width="100%"
               :data="tableConfig.dataSource || []"
-              v-loading="loading"
+              v-loading="tableConfig.loading"
               v-bind="tableConfig.attrs || {}"
               @select="
                 (value, value2, value3, value4) =>
@@ -166,7 +168,7 @@
                   tableCommonFn(tableConfig.events, 'expand-change', value, value2, value3, value4)
               "
             >
-              <template #empty v-if="tableConfig.dataSource.length === 0 && !loading">
+              <template #empty v-if="tableConfig.dataSource.length === 0 && !tableConfig.loading">
                 <el-empty
                   image="https://dee-static.oss-cn-beijing.aliyuncs.com/dee-web/empty-data.png"
                 />
@@ -262,7 +264,6 @@ export default {
   data() {
     const searchValues = this.setSearchValue();
     return {
-      loading: false,
       defaultSearchValues: { ...searchValues },
       searchValues,
     };
