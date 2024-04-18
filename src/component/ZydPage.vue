@@ -52,6 +52,17 @@
         <el-button class="el-button-search" type="primary" @click="onSearch">查询</el-button>
         <el-button class="el-button-reset" @click="onReset">重置</el-button>
       </div>
+      <div class="page-custom-content" v-if="$slots.customContent">
+        <slot name="customContent"></slot>
+      </div>
+      <div class="page-operate" v-if="$slots.operateLeft || $slots.operateRight">
+        <div class="operate-left">
+          <slot name="operateLeft"></slot>
+        </div>
+        <div class="operate-right">
+          <slot name="operateRight"></slot>
+        </div>
+      </div>
       <div class="table-pagination-container">
         <div class="table-container">
           <div class="table-content">
@@ -268,7 +279,9 @@ export default {
       searchValues,
     };
   },
-  mounted() {},
+  mounted() {
+    console.error('============> $slots.slotName', this.$slots);
+  },
   methods: {
     commonFn(item, type, value) {
       item?.events?.[type]?.(value);
@@ -354,10 +367,22 @@ export default {
       ::v-deep {
         .el-form {
           .el-form-item {
-            margin-right: 12px;
+            margin: 0 12px 16px 0;
           }
         }
       }
+    }
+
+    .page-custom-content {
+      margin-bottom: 16px;
+    }
+
+    .page-operate {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 16px;
     }
 
     .table-pagination-container {
