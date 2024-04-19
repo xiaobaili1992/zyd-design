@@ -20,7 +20,6 @@
       placement="bottom"
       effect="light"
       popper-class="operate-tooltip"
-      :value="true"
     >
       <template #content>
         <div v-for="(item, index) in remainConfig" :key="item.key">
