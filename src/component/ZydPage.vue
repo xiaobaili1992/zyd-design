@@ -1,7 +1,7 @@
 <template>
   <div class="zyd-page">
     <div class="page-content">
-      <div class="page-search">
+      <div class="page-search" v-if="searchConfig.length > 0">
         <el-form :inline="true">
           <el-form-item label="" v-for="item in searchConfig" :key="item.key">
             <el-input
@@ -195,21 +195,28 @@
                 v-bind="item.attrs || {}"
               >
                 <template slot-scope="scope">
-                  <slot name="bodyCell" :column="item" :record="scope.row">
+                  <RenderCol
+                    v-if="item.render"
+                    :column="item"
+                    :row="scope.row"
+                    :render="item.render"
+                    :index="scope.$index"
+                  />
+                  <slot v-else name="bodyCell" :column="item" :record="scope.row">
                     <template>
                       <el-tooltip
-                        v-if="item.tooltip"
+                        v-if="item.tooltip && scope.row[item.key]"
                         class="item"
                         effect="dark"
-                        :content="scope.row[item.key]"
+                        :content="renderColumnContent(item, scope.row)"
                         :placement="item.tooltip"
                       >
                         <div :class="item.ellipsis ? 'table-cell' : ''">
-                          {{ scope.row[item.key] }}
+                          {{ renderColumnContent(item, scope.row) }}
                         </div>
                       </el-tooltip>
                       <div v-else :class="item.ellipsis ? 'table-cell' : ''">
-                        {{ scope.row[item.key] }}
+                        {{ renderColumnContent(item, scope.row) }}
                       </div>
                     </template>
                   </slot>
@@ -218,7 +225,7 @@
             </el-table>
           </div>
         </div>
-        <div class="pagination-content" v-if="tableConfig.dataSource.length > 0">
+        <div class="pagination-content" v-if="Object.keys(paginationConfig).length > 0 && tableConfig.dataSource.length > 0">
           <span class="total-span">共{{ paginationConfig.total || 0 }}条</span>
           <el-pagination
             background
@@ -239,8 +246,12 @@
   </div>
 </template>
 <script>
+import dayjs from 'dayjs'
+import RenderCol from '../utils/RenderCol'
+
 export default {
   name: 'ZydPage',
+  components: { RenderCol },
   props: {
     searchConfig: {
       type: Array,
@@ -275,12 +286,12 @@ export default {
   data() {
     const searchValues = this.setSearchValue();
     return {
+      dayjs,
       defaultSearchValues: { ...searchValues },
       searchValues,
     };
   },
   mounted() {
-    console.error('============> $slots.slotName', this.$slots);
   },
   methods: {
     commonFn(item, type, value) {
@@ -295,6 +306,17 @@ export default {
         obj[item.key] = item.defaultValue;
       });
       return obj;
+    },
+    renderColumnContent(item, record) {
+      const value = record[item.key];
+      const { date, format } = item || {}
+      if (value) {
+        if (date) {
+          return dayjs(value).format(format || 'YYYY-MM-DD');
+        }
+        return value
+      }
+      return value === 0 ? value : '--'
     },
     onSearch() {
       this.$emit('onSearch', this.searchValues);

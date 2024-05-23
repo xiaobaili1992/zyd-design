@@ -1,6 +1,6 @@
 {
   "name": "zyd-design",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "rollup build template",
   "keywords": [
     "rollup",
@@ -33,6 +33,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@vue/babel-plugin-transform-vue-jsx": "^1.4.0",
     "@vue/babel-preset-jsx": "^1.4.0",
+    "dayjs": "^1.11.11",
     "element-ui": "^2.15.14",
     "rollup": "^4.12.0",
     "rollup-plugin-livereload": "^2.0.5",
@@ -43,7 +44,8 @@
   },
   "peerDependencies": {
     "element-ui": "^2.15.14",
-    "vue": "2.6.14"
+    "vue": "2.6.14",
+    "dayjs": "^1.11.11"
   },
   "engines": {
     "node": ">=18.18.0"

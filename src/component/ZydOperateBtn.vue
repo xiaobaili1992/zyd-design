@@ -49,6 +49,12 @@ export default {
       type: Number,
       default: 3,
     },
+    dataSource: {
+      type: Object,
+      default: () => {
+        return {};
+      },
+    }
   },
   data() {
     const showOperateBtnConfig = this.getShowOperateBtnConfig();
@@ -60,7 +66,7 @@ export default {
   mounted() {},
   methods: {
     commonFn(item, type, e) {
-      item?.events?.[type]?.(item?.key, e);
+      item?.events?.[type]?.(this.dataSource, e);
     },
     getShowOperateBtnConfig() {
       return (
