@@ -2,8 +2,12 @@
   <div
     class="scale-view"
     :style="{
-      width: width,
-      height: height,
+      width: `${width}px`,
+      height: `${height}px`,
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      'transform-origin': 'left top',
       transform: `scale(${scale}) translate(-50%, -50%)`
     }"
   >
