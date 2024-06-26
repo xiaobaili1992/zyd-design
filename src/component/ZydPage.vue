@@ -6,6 +6,7 @@
           <el-form-item label="" v-for="item in searchConfig" :key="item.key">
             <el-input
               class="el-input"
+              :style="item.style || {}"
               v-if="item.type === 'input'"
               v-model="searchValues[item.key]"
               v-bind="item.attrs || {}"
@@ -19,6 +20,7 @@
             </el-input>
             <el-select
               class="el-select"
+              :style="item.style || {}"
               v-if="item.type === 'select'"
               v-model="searchValues[item.key]"
               v-bind="item.attrs || {}"
@@ -38,15 +40,25 @@
             </el-select>
             <el-date-picker
               class="el-date-picker"
+              :style="item.style || {}"
               v-if="item.type === 'datePicker'"
               v-model="searchValues[item.key]"
-              type="daterange"
-              range-separator="至"
+              :type="item.pickerType || 'date'"
               v-bind="item.attrs || {}"
               @blur="(value) => commonFn(item, 'blur', value)"
               @focus="(value) => commonFn(item, 'focus', value)"
               @change="(value) => commonFn(item, 'change', value)"
             ></el-date-picker>
+            <el-time-picker
+              class="el-time-picker"
+              :style="item.style || {}"
+              v-if="item.type === 'timePicker'"
+              v-model="searchValues[item.key]"
+              v-bind="item.attrs || {}"
+              @blur="(value) => commonFn(item, 'blur', value)"
+              @focus="(value) => commonFn(item, 'focus', value)"
+              @change="(value) => commonFn(item, 'change', value)"
+            ></el-time-picker>
           </el-form-item>
         </el-form>
         <el-button class="el-button-search" type="primary" @click="onSearch">查询</el-button>
@@ -362,7 +374,9 @@ export default {
         fill: #bfbfbf;
       }
       .el-input,
-      .el-select {
+      .el-select,
+      .el-date-picker,
+      .el-time-picker {
         display: flex;
         align-content: center;
         width: 240px;
@@ -372,10 +386,6 @@ export default {
       .el-button-reset {
         box-sizing: border-box;
         padding: 8px 15px;
-      }
-
-      .el-date-picker {
-        width: 400px;
       }
 
       .el-button-search {
