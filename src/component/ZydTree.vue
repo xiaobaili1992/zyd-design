@@ -56,7 +56,7 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     height: 26px;
     //background: #fff;
@@ -82,7 +82,7 @@ export default {
     height: 100%;
     width: 1px;
     position: absolute;
-    left: -6px;
+    left: -5px;
     top: -26px;
     border-left: 1px solid #f0f0f0;
     z-index: 999;
@@ -100,7 +100,7 @@ export default {
     width: 26px;
     height: 1px;
     position: absolute;
-    left: -6px;
+    left: -5px;
     top: 12px;
     border-top: 1px solid #f0f0f0;
     box-sizing: border-box;
@@ -134,10 +134,10 @@ export default {
     // 横线
     .el-tree-node::after {
       content: '';
-      width: 30px;
+      width: 25px;
       height: 1px;
       position: absolute;
-      left: -6px;
+      left: -5px;
       top: 12px;
       border-top: 1px solid #f0f0f0;
       box-sizing: border-box;
