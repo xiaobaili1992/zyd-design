@@ -59,6 +59,20 @@
               @focus="(value) => commonFn(item, 'focus', value)"
               @change="(value) => commonFn(item, 'change', value)"
             ></el-time-picker>
+            <el-cascader
+              class="el-cascader"
+              :style="item.style || {}"
+              v-if="item.type === 'cascader'"
+              :options="item.options"
+              v-model="searchValues[item.key]"
+              v-bind="item.attrs || {}"
+              @change="(value) => commonFn(item, 'change', value)"
+              @visible-change="(value) => commonFn(item, 'visible-change', value)"
+              @expand-change="(value) => commonFn(item, 'expand-change', value)"
+              @remove-tag="(value) => commonFn(item, 'remove-tag', value)"
+              @blur="(value) => commonFn(item, 'blur', value)"
+              @focus="(value) => commonFn(item, 'focus', value)"
+            ></el-cascader>
           </el-form-item>
         </el-form>
         <el-button class="el-button-search" type="primary" @click="onSearch">查询</el-button>
@@ -237,7 +251,10 @@
             </el-table>
           </div>
         </div>
-        <div class="pagination-content" v-if="Object.keys(paginationConfig).length > 0 && tableConfig.dataSource.length > 0">
+        <div
+          class="pagination-content"
+          v-if="Object.keys(paginationConfig).length > 0 && tableConfig.dataSource.length > 0"
+        >
           <span class="total-span">共{{ paginationConfig.total || 0 }}条</span>
           <el-pagination
             background
@@ -258,8 +275,9 @@
   </div>
 </template>
 <script>
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 import RenderCol from '../utils/RenderCol'
+
 
 export default {
   name: 'ZydPage',
@@ -303,8 +321,7 @@ export default {
       searchValues,
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     commonFn(item, type, value) {
       item?.events?.[type]?.(value);
@@ -321,14 +338,14 @@ export default {
     },
     renderColumnContent(item, record) {
       const value = record[item.key];
-      const { date, format } = item || {}
+      const { date, format } = item || {};
       if (value) {
         if (date) {
           return dayjs(value).format(format || 'YYYY-MM-DD');
         }
-        return value
+        return value;
       }
-      return value === 0 ? value : '--'
+      return value === 0 ? value : '--';
     },
     onSearch() {
       this.$emit('onSearch', this.searchValues);
