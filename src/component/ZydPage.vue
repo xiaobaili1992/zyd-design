@@ -276,7 +276,8 @@
 </template>
 <script>
 import dayjs from 'dayjs';
-import RenderCol from './RenderCol';
+import RenderCol from '../utils/RenderCol'
+
 
 export default {
   name: 'ZydPage',
