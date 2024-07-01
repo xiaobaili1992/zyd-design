@@ -1,5 +1,5 @@
 <template>
-  <div class="zyd-tag" :style="`--color:${color};${customSty}`">
+  <div class="zyd-tag" :style="`--color:${color};--bg: ${rgbBackground};${customSty}`">
     <slot />
   </div>
 </template>
@@ -19,13 +19,22 @@ export default {
   },
   computed: {
     rgbBackground() {
-      const colorValue = this.color.slice(1); // 移除'#'
-      const rgb = {
-        r: parseInt(colorValue.slice(0, 2), 16),
-        g: parseInt(colorValue.slice(2, 4), 16),
-        b: parseInt(colorValue.slice(4, 6), 16),
-      };
-      return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.06)`;
+      if (this.color.includes('#')) {
+        const colorValue = this.color.slice(1); // 移除'#'
+        const rgb = {
+          r: parseInt(colorValue.slice(0, 2), 16),
+          g: parseInt(colorValue.slice(2, 4), 16),
+          b: parseInt(colorValue.slice(4, 6), 16),
+        };
+        return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.06)`;
+      } else {
+        const matches = this.color.match(/(\d+)/g);
+        if (matches) {
+          const opacity = (parseFloat(matches[3]) || 1) * 0.06;
+          return `rgba(${matches[0]}, ${matches[1]}, ${matches[2]}, ${opacity.toFixed(2)})`;
+        }
+        return this.color;
+      }
     },
   },
 };
@@ -34,7 +43,6 @@ export default {
 <style lang="scss" scoped>
 .zyd-tag {
   $color: var(--color);
-  $opacity: 0.06;
 
   display: inline-flex;
   flex-direction: row;
@@ -46,7 +54,7 @@ export default {
   font-size: 14px;
   font-family: PingFangSC, 'PingFang SC';
   line-height: 18px;
-  background: v-bind('rgbBackground');
+  background: var(--bg);
   border: 1px solid $color;
   border-radius: 4px;
 }
