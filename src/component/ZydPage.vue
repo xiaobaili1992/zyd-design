@@ -210,7 +210,13 @@
                   image="https://dee-static.oss-cn-beijing.aliyuncs.com/dee-web/empty-data.png"
                 />
               </template>
-              <el-table-column
+
+                <el-table-column 
+                  v-if="tableConfig?.selection==true"
+                  type="selection" width="55"       
+                  :selectable="selectableRow">
+                </el-table-column>
+                <el-table-column
                 v-for="item in tableConfig.columns || []"
                 :prop="item.prop"
                 :label="item.label"
@@ -323,6 +329,9 @@ export default {
   },
   mounted() {},
   methods: {
+    selectableRow(row) {
+      return row?.selectable != false;
+    },
     commonFn(item, type, value) {
       item?.events?.[type]?.(value);
     },
@@ -453,6 +462,11 @@ export default {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          ::v-deep .el-table-column--selection{
+            .cell{
+              padding-left: 14px;
+            }
           }
           ::v-deep {
             .el-table::before,
