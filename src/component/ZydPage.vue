@@ -99,6 +99,7 @@
               style="width: 100%"
               max-width="100%"
               :data="tableConfig.dataSource || []"
+              :default-sort="tableConfig.defaultSort || {}"
               v-loading="tableConfig.loading"
               v-bind="tableConfig.attrs || {}"
               @select="
