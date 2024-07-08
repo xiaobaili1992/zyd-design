@@ -213,7 +213,7 @@
               </template>
 
                 <el-table-column 
-                  v-if="tableConfig?.selection==true"
+                  v-if="tableConfig.selection==true"
                   type="selection" width="55"       
                   :selectable="selectableRow">
                 </el-table-column>
