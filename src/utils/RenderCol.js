@@ -12,6 +12,6 @@ export default {
   },
   render(h, ctx) {
     const { props } = ctx;
-    return props.render(h, props?.row[props?.column?.prop], props.row, props.index);
+    return props.render(h, props?.row?.[props?.column?.prop], props?.row, props?.index);
   },
 };
