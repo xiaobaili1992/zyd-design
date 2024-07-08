@@ -2,6 +2,7 @@
   <div class="zyd-operate-btn">
     <span v-for="(item, index) in topThreeConfig" :key="item.key">
       <el-popover
+        :disabled="!item.tooltip || (item.tooltip.disabled != undefined && item.tooltip.disabled)"
         v-bind="item.tooltip || {}">
         <slot :name="item.key"></slot>
         <el-button type="text"  v-bind="item.attrs || {}" @click="(e) => commonFn(item, 'click', e)" slot="reference">{{ item.label }}</el-button>
