@@ -227,6 +227,9 @@
                 :fixed="item.fixed"
                 v-bind="item.attrs || {}"
               >
+                <template slot="header" v-if="item.headerRender">
+                  <RenderCol :render="item.headerRender" />
+                </template>
                 <template slot-scope="scope">
                   <RenderCol
                     v-if="item.render"
