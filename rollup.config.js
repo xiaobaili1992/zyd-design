@@ -6,16 +6,41 @@ import vue from 'rollup-plugin-vue';
 // import serve from 'rollup-plugin-serve';
 // import livereload from 'rollup-plugin-livereload';
 
+// 手动修改
+const version = "0.0.15"
+
+const date = new Date()
+
+const timeStr = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, 0)}-${date
+  .getDate()
+  .toString()
+  .padStart(2, 0)} ${date.getHours().toString().padStart(2, 0)}:${date
+  .getMinutes()
+  .toString()
+  .padStart(2, 0)}:${date.getSeconds().toString().padStart(2, 0)}`
+
 export default {
   input: 'src/index.js',
-  output: [{
+  output: [ {
     file: 'dist/index-es.js',
-    format: 'es'
-  }, {
-    file: 'dist/index.js',
-    format: 'umd',
-    name: 'libBuild'
-  }],
+    format: 'es',
+    banner: `/*!
+ * index-es.js v${version}
+ * building time ${timeStr}
+ * (c) 2022-2024 Evan You
+ * Copyright (c) 2021 Dee. All Rights Reserved.
+ */`
+}, {
+  file: 'dist/index.js',
+  format: 'umd',
+  name: 'libBuild',
+  banner: `/*!
+* index.js v${version}
+* building time ${timeStr}
+* (c) 2022-2024 Evan You
+* Copyright (c) 2021 Dee. All Rights Reserved.
+*/`
+  },],
   plugins: [
     
     vue({
