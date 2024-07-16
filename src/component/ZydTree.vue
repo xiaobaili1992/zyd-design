@@ -97,7 +97,7 @@ export default {
   // 横线
   .el-tree-node::after {
     content: '';
-    width: 26px;
+    width: 20px;
     height: 1px;
     position: absolute;
     left: -5px;
@@ -134,7 +134,7 @@ export default {
     // 横线
     .el-tree-node::after {
       content: '';
-      width: 25px;
+      width: 20px;
       height: 1px;
       position: absolute;
       left: -5px;
