@@ -5,6 +5,7 @@ import ZydTree from './component/ZydTree.vue';
 import ZydTag from './component/ZydTag.vue'
 import ZydSplitPane from './component/ZydSplitPane.vue'
 import ZydLongTextTooltip from './component/ZydLongTextTooltip.vue'
+import ZydDatePicker from "./component/date-picker/picker.vue"
 
 export {
   ZydPage,
@@ -13,5 +14,6 @@ export {
   ZydTree,
   ZydTag,
   ZydSplitPane,
-  ZydLongTextTooltip
+  ZydLongTextTooltip,
+  ZydDatePicker
 }
