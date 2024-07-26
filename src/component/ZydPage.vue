@@ -238,7 +238,7 @@
                     :render="item.render"
                     :index="scope.$index"
                   />
-                  <slot v-else name="bodyCell" :column="item" :record="scope.row">
+                  <slot v-else name="bodyCell" :column="item" :record="scope.row" :index="scope.$index">
                     <template>
                       <el-tooltip
                         v-if="item.tooltip && scope.row[item.key]"
