@@ -7,10 +7,9 @@ import vue from 'rollup-plugin-vue';
 // import livereload from 'rollup-plugin-livereload';
 import pkg from './package.json' assert { type: 'json' };
 
-// 手动修改
-const {version} = pkg
+const { version } = pkg;
 
-const date = new Date()
+const date = new Date();
 
 const timeStr = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, 0)}-${date
   .getDate()
@@ -18,47 +17,44 @@ const timeStr = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padSta
   .padStart(2, 0)} ${date.getHours().toString().padStart(2, 0)}:${date
   .getMinutes()
   .toString()
-  .padStart(2, 0)}:${date.getSeconds().toString().padStart(2, 0)}`
+  .padStart(2, 0)}:${date.getSeconds().toString().padStart(2, 0)}`;
 
 export default {
   input: 'src/index.js',
-  output: [ {
-    file: 'dist/index-es.js',
-    format: 'es',
-    banner: `/*!
+  output: [
+    {
+      file: 'dist/index-es.js',
+      format: 'es',
+      banner: `/*!
  * index-es.js v${version}
  * building time ${timeStr}
  * (c) 2022-2024 Evan You
  * Copyright (c) 2021 Dee. All Rights Reserved.
- */`
-}, {
-  file: 'dist/index.js',
-  format: 'umd',
-  name: 'libBuild',
-  banner: `/*!
+ */`,
+    },
+    {
+      file: 'dist/index.js',
+      format: 'umd',
+      name: 'libBuild',
+      banner: `/*!
 * index.js v${version}
 * building time ${timeStr}
 * (c) 2022-2024 Evan You
 * Copyright (c) 2021 Dee. All Rights Reserved.
-*/`
-  },],
+*/`,
+    },
+  ],
   plugins: [
-    
     vue({
       compileTemplate: true,
-      css: true
+      css: true,
     }),
     babel({
       babelHelpers: 'bundled',
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.vue'],
-      presets: [
-        ['@babel/preset-env', { modules: false }],
-        '@vue/babel-preset-jsx'
-      ],
-      plugins: [
-        '@babel/plugin-proposal-optional-chaining'
-      ]
+      presets: [['@babel/preset-env', { modules: false }], '@vue/babel-preset-jsx'],
+      plugins: ['@babel/plugin-proposal-optional-chaining'],
     }),
     resolve(),
     commonjs(),
@@ -71,5 +67,5 @@ export default {
     // }),
     // livereload('dist')
   ],
-  external: ['vue', 'element-ui']
-}
+  external: ['vue', 'element-ui'],
+};
