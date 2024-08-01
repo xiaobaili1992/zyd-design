@@ -1,8 +1,9 @@
-const path = require('node:path'); 
+const path = require('node:path');
 
 module.exports = {
   title: '中曜达组件库文档',
   description: '这是一个使用 VuePress 和 vue-docgen-cli 生成的组件库文档',
+  base: '/zyd-design/',
   themeConfig: {
     sidebarDepth: 1,
     sidebar: [
@@ -10,17 +11,17 @@ module.exports = {
         title: '组件',
         collapsable: false,
         children: [
-          // '/components/ZydLargeScreenScale',
-          // '/components/ZydLongTextTooltip',
-          // '/components/ZydOperateBtn',
-          // '/components/ZydPage',
+          '/components/ZydLargeScreenScale',
+          '/components/ZydLongTextTooltip',
+          '/components/ZydOperateBtn',
+          '/components/ZydPage',
           '/components/ZydSplitPane',
           '/components/ZydTag',
-          // '/components/ZydTree',
-          // '/components/ZydTypeExchange',
-        ]
+          '/components/ZydTree',
+          '/components/ZydTypeExchange',
+        ],
       },
-    ]
+    ],
   },
   plugins: [
     [
@@ -30,4 +31,4 @@ module.exports = {
       },
     ],
   ],
-}
+};
