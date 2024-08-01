@@ -52,7 +52,7 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 4px;
+  padding: 3px;
   box-sizing: border-box;
   background: #ffffff;
   border-radius: 4px;

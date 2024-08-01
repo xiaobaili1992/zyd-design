@@ -5,9 +5,10 @@ import terser from '@rollup/plugin-terser';
 import vue from 'rollup-plugin-vue';
 // import serve from 'rollup-plugin-serve';
 // import livereload from 'rollup-plugin-livereload';
+import pkg from './package.json' assert { type: 'json' };
 
 // 手动修改
-const version = "0.0.15"
+const {version} = pkg
 
 const date = new Date()
 
