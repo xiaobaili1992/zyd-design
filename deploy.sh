@@ -21,6 +21,6 @@ git commit -m 'deploy'
 # git@github.com:xiaobaili1992/zyd-design.git
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:xiaobaili1992/zyd-design.git master
+git push -f git@github.com:xiaobaili1992/zyd-design.git master:gh-pages
 
 cd -
