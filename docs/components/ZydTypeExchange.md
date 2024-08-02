@@ -1,7 +1,5 @@
 # ZydTypeExchange
 
-这是 ZydTypeExchange 组件的文档。
-
 ## Props
 
 | Prop name  | Description | Type   | Values | Default                                                                                                                                                    |

@@ -26,12 +26,12 @@ export default {
           g: parseInt(colorValue.slice(2, 4), 16),
           b: parseInt(colorValue.slice(4, 6), 16),
         };
-        if(colorValue.length == 3){
+        if (colorValue.length == 3) {
           rgb = {
             r: parseInt(colorValue.slice(0, 1).repeat(2), 16),
             g: parseInt(colorValue.slice(1, 2).repeat(2), 16),
             b: parseInt(colorValue.slice(2, 3).repeat(2), 16),
-          }
+          };
         }
         return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.06)`;
       } else {

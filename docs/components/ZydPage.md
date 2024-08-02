@@ -1,7 +1,5 @@
 # ZydPage
 
-这是 ZydPage 组件的文档。
-
 ## Props
 
 | Prop name        | Description | Type   | Values | Default                                                                                                                                       |

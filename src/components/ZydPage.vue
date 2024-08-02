@@ -212,12 +212,13 @@
                 />
               </template>
 
-                <el-table-column 
-                  v-if="tableConfig.selection==true"
-                  type="selection" width="55"       
-                  :selectable="selectableRow">
-                </el-table-column>
-                <el-table-column
+              <el-table-column
+                v-if="tableConfig.selection == true"
+                type="selection"
+                width="55"
+                :selectable="selectableRow"
+              ></el-table-column>
+              <el-table-column
                 v-for="item in tableConfig.columns || []"
                 :prop="item.prop"
                 :label="item.label"
@@ -238,7 +239,13 @@
                     :render="item.render"
                     :index="scope.$index"
                   />
-                  <slot v-else name="bodyCell" :column="item" :record="scope.row" :index="scope.$index">
+                  <slot
+                    v-else
+                    name="bodyCell"
+                    :column="item"
+                    :record="scope.row"
+                    :index="scope.$index"
+                  >
                     <template>
                       <el-tooltip
                         v-if="item.tooltip && scope.row[item.key]"
@@ -286,8 +293,7 @@
 </template>
 <script>
 import dayjs from 'dayjs';
-import RenderCol from '../utils/RenderCol'
-
+import RenderCol from '../utils/RenderCol';
 
 export default {
   name: 'ZydPage',
@@ -467,8 +473,8 @@ export default {
             text-overflow: ellipsis;
             white-space: nowrap;
           }
-          ::v-deep .el-table-column--selection{
-            .cell{
+          ::v-deep .el-table-column--selection {
+            .cell {
               padding-left: 14px;
             }
           }
@@ -494,9 +500,7 @@ export default {
                 color: #333;
                 background: #f7f7f7 !important;
                 div {
-                  font-family:
-                    PingFangSC,
-                    PingFang SC;
+                  font-family: PingFangSC, PingFang SC;
                   font-weight: bold;
                   font-size: 14px;
                   color: #333333;

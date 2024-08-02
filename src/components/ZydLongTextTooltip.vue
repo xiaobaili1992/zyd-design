@@ -21,11 +21,22 @@
 export default {
   name: 'ZydLongTextTooltip',
   props: {
-    text: { default: '' }, // 字符内容
+    /**
+     * 显示的内容
+     */
+    text: { default: '' },
+    /**
+     * Tooltip 的出现位置
+     * @values top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end
+     */
     placement: { type: String, default: 'top-start' },
-    className: { type: String, default: 'text' }, // class
+    /**
+     * 是否需要tooltip
+     * @deprecated 下个版本不再使用，将使用visible替换
+     */
     disabled: {
       default: false,
+      type: Boolean,
     },
   },
   data() {

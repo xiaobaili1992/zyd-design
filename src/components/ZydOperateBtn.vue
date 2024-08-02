@@ -3,9 +3,18 @@
     <span v-for="(item, index) in topThreeConfig" :key="item.key">
       <el-popover
         :disabled="!item.tooltip || (item.tooltip.disabled != undefined && item.tooltip.disabled)"
-        v-bind="item.tooltip || {}">
+        v-bind="item.tooltip || {}"
+      >
+        <!-- @slot popover内容，根据topThreeConfig配置的key值做插槽名 -->
         <slot :name="item.key"></slot>
-        <el-button type="text"  v-bind="item.attrs || {}" @click="(e) => commonFn(item, 'click', e)" slot="reference">{{ item.label }}</el-button>
+        <el-button
+          type="text"
+          v-bind="item.attrs || {}"
+          @click="(e) => commonFn(item, 'click', e)"
+          slot="reference"
+        >
+          {{ item.label }}
+        </el-button>
       </el-popover>
       <el-divider
         class="zyd-operate-vertical-line"
@@ -42,22 +51,31 @@
 export default {
   name: 'ZydOperateBtn',
   props: {
+    /**
+     * 操作按钮配置
+     */
     operateBtnConfig: {
       type: Array,
       default: () => {
         return [];
       },
     },
+    /**
+     * 分割数
+     */
     partitionNum: {
       type: Number,
       default: 3,
     },
+    /**
+     * 传入的数据，鼠标点击操作按钮会传出，不做任何处理
+     */
     dataSource: {
       type: Object,
       default: () => {
         return {};
       },
-    }
+    },
   },
   data() {
     const showOperateBtnConfig = this.getShowOperateBtnConfig();
@@ -98,9 +116,7 @@ export default {
     border-bottom-color: #fff !important;
   }
   .el-button {
-    font-family:
-      PingFangSC,
-      PingFang SC;
+    font-family: PingFangSC, PingFang SC;
     font-size: 14px;
     color: #666666;
   }

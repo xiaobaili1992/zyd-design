@@ -1,14 +1,11 @@
 # ZydTag
 
-这是 ZydTag 组件的文档。
-
-## 示例
-
 <ClientOnly>
-  <ZydTag />
-</ClientOnly>
-<details>
-  <summary>查看代码</summary>
+<CodePreview>
+<template slot="preview">
+<ZydTag />
+</template>
+<template slot="code">
 
 ```vue
 <template>
@@ -28,7 +25,9 @@ export default {
 </script>
 ```
 
-</details>
+</template>
+</CodePreview>
+</ClientOnly>
 
 ## Props
 

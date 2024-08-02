@@ -1,27 +1,22 @@
 # ZydSplitPane
 
-这是 ZydSplitPane 组件的文档。
-
-## 示例
-
 <ClientOnly>
-  <ZydSplitPane />
-</ClientOnly>
-<details>
-  <summary>查看代码</summary>
+<CodePreview>
+<template slot="preview">
+<ZydSplitPane />
+</template>
+<template slot="code">
 
 ```vue
 <template>
-  <div>
-    <ZydSplitPane color="#1cb866">
-      <template slot="left">
-        <div class="left">Left Pane</div>
-      </template>
-      <template slot="right">
-        <div class="right">Right Pane</div>
-      </template>
-    </ZydSplitPane>
-  </div>
+  <ZydSplitPane color="#1cb866">
+    <template slot="left">
+      <div class="left">Left Pane</div>
+    </template>
+    <template slot="right">
+      <div class="right">Right Pane</div>
+    </template>
+  </ZydSplitPane>
 </template>
 
 <script>
@@ -44,7 +39,9 @@ export default {
 </style>
 ```
 
-</details>
+</template>
+</CodePreview>
+</ClientOnly>
 
 ## Props
 

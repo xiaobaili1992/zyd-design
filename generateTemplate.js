@@ -2,6 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { name } = require('./package.json');
 
+const notNeedPreviewComponent = ['ZydLargeScreenScale'];
+
 const getPath = (curPath) => {
   return path.resolve(__dirname, curPath);
 };
@@ -44,10 +46,9 @@ const getFileName = (dirPath) => {
 
 const commonTemplate = (componentInfo, componentName, previewCase) => {
   const { props, slots, methods, events, expose, functionalTag } = componentInfo;
+
   return `
 # ${componentName}
-
-这是 ${componentName} 组件的文档。
 
 ${previewCase}
 
@@ -74,24 +75,28 @@ module.exports = (componentInfo, componentName) => {
 
   const filePath = getPath(`./src/previews/${componentName}.vue`);
   const exampleCode = getFileContent(filePath, componentName);
+  const component = notNeedPreviewComponent.includes(componentName)
+    ? '该组件为全屏模式，暂不支持展示'
+    : `<${componentName} />`;
 
   return commonTemplate(
     componentInfo,
     componentName,
     `
-## 示例
-
 <ClientOnly>
-  <${componentName} />
-</ClientOnly>
-<details>
-  <summary>查看代码</summary>
+<CodePreview>
+<template slot="preview">
+${component}
+</template>
+<template slot="code">
 
 \`\`\`vue
 ${exampleCode}
 \`\`\`
 
-</details>
+</template>
+</CodePreview>
+</ClientOnly>
 `,
   );
 };
