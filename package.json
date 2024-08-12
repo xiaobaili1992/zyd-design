@@ -24,6 +24,7 @@
     "type": "git",
     "url": "https://github.com/xiaobaili1992/zyd-design.git"
   },
+  "homepage": "https://xiaobaili1992.github.io/zyd-design/",
   "devDependencies": {
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vuepress/core": "^1.9.10",
