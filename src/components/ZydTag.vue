@@ -5,13 +5,20 @@
 </template>
 
 <script>
+import color from "../utils/color"
 export default {
   name: 'ZydTag',
   props: {
+    /** 
+     * 颜色，可以十六进制(6位16进制和3位16进制)、RGB、RGBA和颜色名称表示
+     **/
     color: {
       type: String,
       default: '#2355D8',
     },
+  /**
+   * 自定义样式
+   **/
     customSty: {
       type: String,
       default: '',
@@ -19,8 +26,12 @@ export default {
   },
   computed: {
     rgbBackground() {
-      if (this.color.includes('#')) {
-        const colorValue = this.color.slice(1); // 移除'#'
+      let temp = this.color;
+      if(Object.prototype.hasOwnProperty.call(color, temp)){
+        temp = color[temp];
+      }
+      if (temp.includes('#')) {
+        const colorValue = temp.slice(1); // 移除'#'
         let rgb = {
           r: parseInt(colorValue.slice(0, 2), 16),
           g: parseInt(colorValue.slice(2, 4), 16),
@@ -35,12 +46,12 @@ export default {
         }
         return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.06)`;
       } else {
-        const matches = this.color.match(/(\d+)/g);
+        const matches = temp.match(/(\d+)/g);
         if (matches) {
           const opacity = (parseFloat(matches[3]) || 1) * 0.06;
           return `rgba(${matches[0]}, ${matches[1]}, ${matches[2]}, ${opacity.toFixed(2)})`;
         }
-        return this.color;
+        return temp;
       }
     },
   },

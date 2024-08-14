@@ -15,22 +15,25 @@
 export default {
   name: 'ZydTypeExchange',
   props: {
+    /**
+     * 列表切换项
+     */ 
     sourceData: {
-      default: () => [
-        {
-          key: 1,
-          label: '日',
-        },
-        {
-          key: 2,
-          label: '月',
-        },
-        {
-          key: 3,
-          label: '年',
-        },
-      ],
+      type: "",
+      default: [{
+        key: 1,
+        label: '日',
+      }, {
+        key: 2,
+        label: '月',
+      }, {
+        key: 3,
+        label: '年',
+      },],
     },
+    /**
+     * 当前选中的项
+     */
     activeKey: {
       type: Number,
       default: 1,
@@ -39,7 +42,13 @@ export default {
   methods: {
     handleClick(item) {
       if (item.key == this.activeKey) return;
+      /**
+       * 更新activeKey
+       */ 
       this.$emit('update:activeKey', item.key);
+      /**
+       * 更新事件
+       */ 
       this.$emit('change', item);
     },
   },
