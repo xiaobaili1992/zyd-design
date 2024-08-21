@@ -1,6 +1,9 @@
 <template>
   <div class="container-h" v-if="direction == 'h'">
-    <div class="left" :style="{ width: leftWidth + 'px', minWidth: leftWidth == 0 ? 0 : '250px' }">
+    <div
+      class="left"
+      :style="{ width: leftWidth + 'px', maxWidth, minWidth: leftWidth == 0 ? 0 : '250px' }"
+    >
       <slot name="left" />
     </div>
     <div class="divider-h" @mousedown="startDrag" v-if="leftWidth != 0"></div>
@@ -9,7 +12,14 @@
     </div>
   </div>
   <div class="container-v" v-else>
-    <div class="top" :style="{ height: topHeight + 'px' }">
+    <div
+      class="top"
+      :style="{
+        height: topHeight + 'px',
+        minHeight: topHeight == 0 ? 0 : '250px',
+        maxHeight: maxWidth,
+      }"
+    >
       <slot name="left" />
     </div>
     <div class="divider-v" @mousedown="startDrag"></div>
@@ -23,11 +33,22 @@
 export default {
   name: 'ZydSplitPane',
   props: {
-    // 默认的宽度或高度
+    /**
+     *  默认的宽度或高度
+     */
     width: {
       default: 280,
     },
-    // 水平或垂直
+    /**
+     *  最大宽度或高度
+     */
+    maxWidth: {
+      default: '500px',
+    },
+    /**
+     *  水平或垂直
+     * @values h/v
+     */
     direction: {
       type: String,
       default: 'h',
@@ -82,7 +103,13 @@ export default {
           let delta = e.clientX - this.startX;
           // 更新左右区域的宽度
           this.leftWidth = this.startLeftWidth + delta;
+          /**
+           * 更新宽度
+           */
           this.$emit('update:width', this.leftWidth);
+          /**
+           * 拖动变化时候返回宽度状态
+           */
           this.$emit('change', this.leftWidth);
         } else {
           // 计算垂直拖动的距离
@@ -131,7 +158,7 @@ export default {
   .top {
     width: 100%;
   }
-  .right {
+  .bottom {
     width: 100%;
     flex: 1;
   }
