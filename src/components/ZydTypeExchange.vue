@@ -17,19 +17,23 @@ export default {
   props: {
     /**
      * 列表切换项
-     */ 
+     */
     sourceData: {
-      type: "",
-      default: [{
-        key: 1,
-        label: '日',
-      }, {
-        key: 2,
-        label: '月',
-      }, {
-        key: 3,
-        label: '年',
-      },],
+      type: '',
+      default: [
+        {
+          key: 1,
+          label: '日',
+        },
+        {
+          key: 2,
+          label: '月',
+        },
+        {
+          key: 3,
+          label: '年',
+        },
+      ],
     },
     /**
      * 当前选中的项
@@ -44,11 +48,11 @@ export default {
       if (item.key == this.activeKey) return;
       /**
        * 更新activeKey
-       */ 
+       */
       this.$emit('update:activeKey', item.key);
       /**
        * 更新事件
-       */ 
+       */
       this.$emit('change', item);
     },
   },
@@ -67,7 +71,7 @@ export default {
   border-radius: 4px;
   border: 1px solid #d9d9d9;
   .type-item {
-    width: 40px;
+    min-width: 40px;
     height: 24px;
     display: flex;
     flex-direction: row;
@@ -77,6 +81,8 @@ export default {
     color: #999;
     font-size: 14px;
     cursor: pointer;
+    padding: 0 4px;
+    box-sizing: border-box;
   }
   .type-item-active {
     background: #2355d8;
