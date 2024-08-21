@@ -2,7 +2,7 @@
   <div class="container-h" v-if="direction == 'h'">
     <div
       class="left"
-      :style="{ width: leftWidth + 'px', maxWidth, minWidth: leftWidth == 0 ? 0 : '250px' }"
+      :style="{ width: leftWidth + 'px', maxWidth, minWidth: leftWidth == 0 ? 0 : minWidth }"
     >
       <slot name="left" />
     </div>
@@ -16,7 +16,7 @@
       class="top"
       :style="{
         height: topHeight + 'px',
-        minHeight: topHeight == 0 ? 0 : '250px',
+        minHeight: topHeight == 0 ? 0 : minWidth,
         maxHeight: maxWidth,
       }"
     >
@@ -38,6 +38,12 @@ export default {
      */
     width: {
       default: 280,
+    },
+    /**
+     * 最小宽度
+     */
+    minWidth: {
+      default: '250px',
     },
     /**
      *  最大宽度或高度
