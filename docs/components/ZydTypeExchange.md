@@ -10,7 +10,7 @@
 ```vue
 <template>
   <div class="box">
-    <ZydTypeExchange :activeKey.sync="activeKey" />
+    <ZydTypeExchange :sourceData="sourceData" :activeKey.sync="activeKey" />
   </div>
 </template>
 
@@ -21,6 +21,20 @@ export default {
   data() {
     return {
       activeKey: 1,
+      sourceData: [
+        {
+          key: 1,
+          label: '日',
+        },
+        {
+          key: 2,
+          label: '月',
+        },
+        {
+          key: 3,
+          label: '年',
+        },
+      ],
     };
   },
 };
@@ -30,6 +44,10 @@ export default {
 .box {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 </style>
 ```
