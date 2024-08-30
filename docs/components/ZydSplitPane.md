@@ -70,7 +70,7 @@ export default {
 | Prop name | Description      | Type   | Values | Default |
 | --------- | ---------------- | ------ | ------ | ------- |
 | width     | 默认的宽度或高度 | number | -      | 280     |
-| minWidth  | 最小宽度         | string | -      | "250px" |
+| minWidth  | 最小宽度         | string | -      | '250px' |
 | maxWidth  | 最大宽度或高度   | string | -      | '500px' |
 | direction | 水平或垂直       | string | `h/v`  | 'h'     |
 

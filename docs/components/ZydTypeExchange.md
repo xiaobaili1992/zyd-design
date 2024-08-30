@@ -11,6 +11,7 @@
 <template>
   <div class="box">
     <ZydTypeExchange :sourceData="sourceData" :activeKey.sync="activeKey" />
+    <ZydTypeExchange :sourceData="sourceData1" :activeKey.sync="activeKey" />
   </div>
 </template>
 
@@ -35,6 +36,20 @@ export default {
           label: '年',
         },
       ],
+      sourceData1: [
+        {
+          key: 1,
+          label: '今日',
+        },
+        {
+          key: 2,
+          label: '本月',
+        },
+        {
+          key: 3,
+          label: '2024年',
+        },
+      ],
     };
   },
 };
@@ -48,6 +63,7 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  gap: 8px;
 }
 </style>
 ```
@@ -58,10 +74,10 @@ export default {
 
 ## Props
 
-| Prop name  | Description  | Type   | Values | Default                                                                                                                   |
-| ---------- | ------------ | ------ | ------ | ------------------------------------------------------------------------------------------------------------------------- |
-| sourceData | 列表切换项   | ""     | -      | [{<br/> key: 1,<br/> label: '日',<br/>}, {<br/> key: 2,<br/> label: '月',<br/>}, {<br/> key: 3,<br/> label: '年',<br/>},] |
-| activeKey  | 当前选中的项 | number | -      | 1                                                                                                                         |
+| Prop name  | Description  | Type   | Values | Default                                                                                                                                           |
+| ---------- | ------------ | ------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sourceData | 列表切换项   | ''     | -      | [<br/> {<br/> key: 1,<br/> label: '日',<br/> },<br/> {<br/> key: 2,<br/> label: '月',<br/> },<br/> {<br/> key: 3,<br/> label: '年',<br/> },<br/>] |
+| activeKey  | 当前选中的项 | number | -      | 1                                                                                                                                                 |
 
 ## Events
 

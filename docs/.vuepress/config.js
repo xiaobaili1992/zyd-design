@@ -11,6 +11,7 @@ module.exports = {
         title: '组件',
         collapsable: false,
         children: [
+          '/components/ZydIconButton',
           '/components/ZydLargeScreenScale',
           '/components/ZydLongTextTooltip',
           '/components/ZydOperateBtn',
