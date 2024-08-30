@@ -6,6 +6,7 @@ import ZydTag from './components/ZydTag.vue';
 import ZydSplitPane from './components/ZydSplitPane.vue';
 import ZydLongTextTooltip from './components/ZydLongTextTooltip.vue';
 import ZydTypeExchange from './components/ZydTypeExchange.vue';
+import ZydIconButton from './components/ZydIconButton.vue';
 
 export {
   ZydPage,
@@ -16,4 +17,5 @@ export {
   ZydSplitPane,
   ZydLongTextTooltip,
   ZydTypeExchange,
+  ZydIconButton,
 };

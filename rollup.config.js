@@ -67,5 +67,5 @@ export default {
     // }),
     // livereload('dist')
   ],
-  external: ['vue', 'element-ui'],
+  external: ['vue', 'element-ui', "dee-svg-icon"],
 };
