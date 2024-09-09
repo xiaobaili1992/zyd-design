@@ -24,6 +24,7 @@ const operateBtnConfig = [
     label: '续约1',
     key: 'operate1',
     attrs: {}, // element-ui button按钮的属性
+    tooltip: true,
     events: {
       // element-ui button按钮的方法
       click(daSource, e) {
