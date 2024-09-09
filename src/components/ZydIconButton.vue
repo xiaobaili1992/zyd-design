@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-button
-      class="zyd-icon-button"
-      ref="zyd-icon-button"
+      class="zyd-custom-icon-button"
+      size="small"
       :type="type"
       v-bind="$attrs"
       v-on="$listeners"
@@ -10,8 +10,9 @@
     >
       <svg-icon v-if="iconClass != null" :iconClass="iconClass" />
       <!-- @slot 可以根据dee-svg-icon名写入iconClass进行渲染，也可以插槽自定义icon-->
-      <slot></slot>
-      <p>{{ content }}</p>
+      <slot name="icon"></slot>
+      <!-- @slot 不加插槽名，为button文字内容 -->
+      <p><slot></slot></p>
     </el-button>
     <template v-if="opacity">
       <el-tooltip
@@ -21,59 +22,37 @@
         :content="tooltip"
         placement="top"
       >
-        <el-button
-          class="zyd-icon-button"
-          style="opacity: 0.3"
-          :type="type"
-          ref="zyd-icon-button"
-          v-bind="$attrs"
-          v-on="$listeners"
-        >
+        <el-button class="zyd-custom-icon-button" size="small" :type="type" style="opacity: 0.3">
           <svg-icon v-if="iconClass != null" :iconClass="iconClass" />
-          <slot></slot>
-          <p>{{ content }}</p>
+          <slot name="icon"></slot>
+          <p><slot></slot></p>
         </el-button>
       </el-tooltip>
     </template>
   </div>
 </template>
+
 <script>
+import { SvgIcon } from 'dee-svg-icon';
 export default {
   name: 'ZydIconButton',
+  components: { SvgIcon },
   props: {
     /**
-     * 按钮的文本内容
-     * @values 创建/批量控制/……
-     */
-    content: {
+     * 图标类名，具体详见`dee-svg-icon`的配置名称
+     **/
+    iconClass: {
       type: String,
-      default: '',
+      default: 'dee-download',
     },
     /**
-     * 按钮类型，默认为primary，即蓝底白字
+     * 按钮类型，默认为plain，即白底蓝框
      * @values primary/plain
      */
     type: {
       type: String,
-      default: 'primary',
+      default: 'plain',
     },
-    /**
-     * 采用dee-svg-icon的图标，默认为null，没有图标
-     */
-    iconClass: {
-      type: String,
-      default: null,
-    },
-    /**
-     * 按钮弹出tooltip的内容
-     * 批量控制未选择时点击事件
-     * tooltip在未传参或按钮被禁用时，即opacity为false时，tooltip不会显示
-     */
-    tooltip: {
-      type: String,
-      default: null,
-    },
-
     /**
      * 是否需要透明度
      * eg: 批量控制未选择时点击事件
@@ -84,49 +63,46 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-
-  data() {
-    return {};
-  },
-  mounted() {
-    this.extendMethod();
-  },
-  methods: {
-    extendMethod() {
-      const refMethod = Object.entries(this.$refs['zyd-icon-button']);
-      for (const [key, value] of refMethod) {
-        if (!(key.includes('$') || key.includes('_'))) {
-          this[key] = value;
-        }
-      }
+    /**
+     * 按钮弹出tooltip的内容
+     * 批量控制未选择时点击事件
+     * tooltip在未传参或按钮被禁用时，即opacity为false时，tooltip不会显示
+     */
+    tooltip: {
+      type: String,
+      default: null,
     },
   },
 };
 </script>
+
 <style lang="scss" scoped>
-.zyd-icon-button {
+.zyd-custom-icon-button {
+  height: 32px;
   box-sizing: border-box;
-  height: 33px;
+  padding: 8px 15px;
   ::v-deep > span {
     display: flex;
     align-items: center;
   }
-  p {
-    margin-left: 3px;
-    color: #ffffff;
-  }
-  svg {
-    position: relative;
-    top: 0px;
-    left: 5px;
-    width: 14px;
-    height: 14px;
-    margin-right: 8px;
-    fill: #ffffff;
-  }
 }
-
+::v-deep .el-button--primary {
+  border: 1px solid #2355d8;
+  background: #2355d8;
+}
+p {
+  margin-left: 3px;
+  color: #ffffff;
+}
+svg {
+  position: relative;
+  top: 0px;
+  left: 5px;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  fill: #ffffff;
+}
 ::v-deep .el-button--plain {
   border: 1px solid #2355d8;
   background: #fff;
