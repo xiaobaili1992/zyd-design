@@ -400,6 +400,7 @@ export default {
       align-items: flex-start;
       justify-content: flex-start;
       width: 100%;
+      margin-bottom: 8px;
 
       .input-icon {
         position: relative;
