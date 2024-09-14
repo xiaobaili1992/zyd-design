@@ -58,6 +58,6 @@ export default {
   background: var(--bg-color);
   height: 32px;
   box-sizing: border-box;
-  padding: 8px 15px;
+  padding: 8px 12px;
 }
 </style>
