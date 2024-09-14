@@ -44,6 +44,7 @@ export default {
 */`,
     },
   ],
+  treeshake: true,
   plugins: [
     vue({
       compileTemplate: true,
@@ -67,5 +68,5 @@ export default {
     // }),
     // livereload('dist')
   ],
-  external: ['vue', 'element-ui', "dee-svg-icon"],
+  external: ['vue', 'element-ui', 'dee-svg-icon'],
 };

@@ -1,6 +1,6 @@
 {
   "name": "zyd-design",
-  "version": "0.0.21",
+  "version": "0.0.24",
   "description": "rollup build template",
   "keywords": [
     "rollup",
@@ -60,7 +60,8 @@
   "peerDependencies": {
     "dayjs": "^1.11.11",
     "element-ui": "^2.15.14",
-    "vue": "2.6.14"
+    "vue": "2.6.14",
+    "dee-svg-icon": "^0.0.1"
   },
   "engines": {
     "node": ">=18.18.0"
