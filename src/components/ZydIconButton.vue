@@ -33,10 +33,8 @@
 </template>
 
 <script>
-import { SvgIcon } from 'dee-svg-icon';
 export default {
   name: 'ZydIconButton',
-  components: { SvgIcon },
   props: {
     /**
      * 图标类名，具体详见`dee-svg-icon`的配置名称

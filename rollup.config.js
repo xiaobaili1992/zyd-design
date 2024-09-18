@@ -28,8 +28,8 @@ export default {
       banner: `/*!
  * index-es.js v${version}
  * building time ${timeStr}
- * (c) 2022-2024 Evan You
- * Copyright (c) 2021 Dee. All Rights Reserved.
+ * (c) 2022-2024 xiaobai.li
+ * Copyright (c) 2024 Dee. All Rights Reserved.
  */`,
     },
     {
@@ -39,8 +39,8 @@ export default {
       banner: `/*!
 * index.js v${version}
 * building time ${timeStr}
-* (c) 2022-2024 Evan You
-* Copyright (c) 2021 Dee. All Rights Reserved.
+* (c) 2022-2024 xiaobai.li
+* Copyright (c) 2024 Dee. All Rights Reserved.
 */`,
     },
   ],
@@ -68,5 +68,5 @@ export default {
     // }),
     // livereload('dist')
   ],
-  external: ['vue', 'element-ui', 'dee-svg-icon'],
+  external: ['vue', 'element-ui'],
 };

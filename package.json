@@ -9,11 +9,12 @@
     "template"
   ],
   "main": "./dist/index-es.js",
+  "type": "module",
   "scripts": {
     "dev:docs": "vuepress dev docs",
     "build:docs": "vuepress build docs",
     "gen:docs": "vue-docgen",
-    "lib:build": "rollup --bundleConfigAsCjs -c"
+    "lib:build": "rollup -c"
   },
   "files": [
     "dist"
@@ -51,7 +52,6 @@
   },
   "dependencies": {
     "core-js": "2",
-    "dee-svg-icon": "^0.0.1",
     "element-ui": "^2.15.14",
     "vue": "2.6.14",
     "vue-server-renderer": "2.6.14",
@@ -60,8 +60,7 @@
   "peerDependencies": {
     "dayjs": "^1.11.11",
     "element-ui": "^2.15.14",
-    "vue": "2.6.14",
-    "dee-svg-icon": "^0.0.1"
+    "vue": "2.6.14"
   },
   "engines": {
     "node": ">=18.18.0"
