@@ -50,6 +50,8 @@ export default {
       compileTemplate: true,
       css: true,
     }),
+    resolve(),
+    commonjs(),
     babel({
       babelHelpers: 'bundled',
       exclude: 'node_modules/**',
@@ -57,8 +59,6 @@ export default {
       presets: [['@babel/preset-env', { modules: false }], '@vue/babel-preset-jsx'],
       plugins: ['@babel/plugin-proposal-optional-chaining'],
     }),
-    resolve(),
-    commonjs(),
     terser(),
     // serve({
     //   open: true,
