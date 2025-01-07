@@ -9,6 +9,7 @@ import ZydTypeExchange from './components/ZydTypeExchange.vue';
 import ZydInput from './components/ZydInput.vue';
 import ZydTitle from './components/ZydTitle.vue';
 import ZydIconButton from './components/ZydIconButton.vue';
+import ZydDetails from './components/ZydDetails.vue';
 
 export {
   ZydPage,
@@ -22,4 +23,5 @@ export {
   ZydInput,
   ZydTitle,
   ZydIconButton,
+  ZydDetails,
 };
