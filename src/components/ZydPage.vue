@@ -370,7 +370,7 @@ export default {
       this.$emit('onSearch', this.searchValues);
     },
     onReset() {
-      this.searchValues = this.defaultSearchValues;
+      this.searchValues = this.setSearchValue();
       this.$emit('onReset', this.searchValues);
     },
   },
