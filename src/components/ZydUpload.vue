@@ -2,7 +2,7 @@
 <template>
   <el-dialog
     :visible.sync="uploadVisible"
-    title="导入文件"
+    :title="$t ? $t('导入文件') : '导入文件'"
     width="600px"
     :lock-scroll="false"
     @close="handleClose"
@@ -62,17 +62,31 @@
             <img v-else :src="commonImg" alt="" />
           </div>
           <div class="text">
-            <span class="span2">可直接将待导入的文件拖拽到本区域，或</span>
-            <span class="span1">点击上传</span>
+            <span class="span2">
+              {{
+                $t
+                  ? $t('可直接将待导入的文件拖拽到本区域，或')
+                  : '可直接将待导入的文件拖拽到本区域，或'
+              }}
+            </span>
+            <span class="span1">{{ $t ? $t('点击上传') : '点击上传' }}</span>
           </div>
-          <div class="zi">请按模板要求整理导入数据，确保数据的真实性和格式的准确性</div>
+          <div class="zi">
+            {{
+              $t
+                ? $t('请按模板要求整理导入数据，确保数据的真实性和格式的准确性')
+                : '请按模板要求整理导入数据，确保数据的真实性和格式的准确性'
+            }}
+          </div>
         </div>
       </el-upload>
     </div>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="handleClose">取消</el-button>
-        <el-button type="primary" :loading="importLoading" @click="submitImport">确定</el-button>
+        <el-button @click="handleClose">{{ $t ? $t('取消') : '取消' }}</el-button>
+        <el-button type="primary" :loading="importLoading" @click="submitImport">
+          {{ $t ? $t('确定') : '确定' }}
+        </el-button>
       </span>
     </template>
   </el-dialog>
@@ -172,7 +186,7 @@ export default {
         }
       } catch (error) {
         console.error('文件上传失败:', error);
-        ElMessage.error('文件上传失败,请重试');
+        ElMessage.error(this?.$t ? this?.$t('文件上传失败,请重试') : '文件上传失败,请重试');
       }
     },
 
@@ -182,7 +196,7 @@ export default {
     async submitImport() {
       try {
         if (!this.uploadInfo.uploadUrl && !this.uploadInfo.formFile) {
-          ElMessage.error('请先选择需要上传的文件');
+          ElMessage.error(this?.$t ? this?.$t('请先选择需要上传的文件') : '请先选择需要上传的文件');
           return;
         }
 

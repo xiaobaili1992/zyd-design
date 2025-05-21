@@ -75,8 +75,12 @@
             ></el-cascader>
           </el-form-item>
         </el-form>
-        <el-button class="el-button-search" type="primary" @click="onSearch">查询</el-button>
-        <el-button class="el-button-reset" @click="onReset">重置</el-button>
+        <el-button class="el-button-search" type="primary" @click="onSearch">
+          {{ $t ? $t('查询') : '查询' }}
+        </el-button>
+        <el-button class="el-button-reset" @click="onReset">
+          {{ $t ? $t('重置') : '重置' }}
+        </el-button>
       </div>
       <div class="page-custom-content" v-if="$slots.customContent">
         <slot name="customContent"></slot>
@@ -272,7 +276,9 @@
           class="pagination-content"
           v-if="Object.keys(paginationConfig).length > 0 && tableConfig.dataSource.length > 0"
         >
-          <span class="total-span">共{{ paginationConfig.total || 0 }}条</span>
+          <span class="total-span">
+            {{ $t ? $t('共') : '共' }}{{ paginationConfig.total || 0 }}{{ $t ? $t('条') : '条' }}
+          </span>
           <el-pagination
             background
             :total="paginationConfig.total || 0"

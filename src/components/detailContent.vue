@@ -75,18 +75,24 @@ export default {
       handler(newVal) {
         try {
           if (!Array.isArray(newVal)) {
-            this.errorMsg = '数据格式异常,details必须为数组';
+            this.errorMsg = this?.$t
+              ? this?.$t('数据格式异常,details必须为数组')
+              : '数据格式异常,details必须为数组';
             return;
           }
           for (const item of newVal) {
             if (!item.key) {
-              this.errorMsg = '数据格式异常,每项必须包含key字段';
+              this.errorMsg = this?.$t
+                ? this?.$t('数据格式异常,每项必须包含key字段')
+                : '数据格式异常,每项必须包含key字段';
               return;
             }
           }
           this.errorMsg = null;
         } catch (error) {
-          this.errorMsg = '数据格式异常,异常信息:' + error;
+          this.errorMsg = this?.$t
+            ? this?.$t('数据格式异常,异常信息:')
+            : '数据格式异常,异常信息:' + error;
         }
       },
       deep: true,
@@ -131,7 +137,9 @@ export default {
 
         return sections;
       } catch (error) {
-        this.errorMsg = '数据格式异常,异常信息:' + error;
+        this.errorMsg = this?.$t
+          ? this?.$t('数据格式异常,异常信息:')
+          : '数据格式异常,异常信息:' + error;
         return [];
       }
     },

@@ -22,7 +22,7 @@
             <slot name="footer" />
           </template>
           <div v-else class="footer-inner">
-            <el-button @click="close">关闭</el-button>
+            <el-button @click="close">{{ $t ? $t('关闭') : '关闭' }}</el-button>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
           <slot name="footer" />
         </template>
         <div v-else class="footer-inner">
-          <el-button @click="close">关闭</el-button>
+          <el-button @click="close">{{ $t ? $t('关闭') : '关闭' }}</el-button>
         </div>
       </template>
     </el-dialog>

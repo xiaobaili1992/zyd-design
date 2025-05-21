@@ -2,7 +2,7 @@
   <div class="type-exchange-wrap">
     <div
       :class="activeKey == item.key ? 'type-item type-item-active' : 'type-item'"
-      v-for="item in sourceData"
+      v-for="item in formatSourceData"
       :key="item.key"
       @click="handleClick(item)"
     >
@@ -41,6 +41,24 @@ export default {
     activeKey: {
       type: Number,
       default: 1,
+    },
+  },
+  data() {
+    return {
+      formatSourceData: [],
+    };
+  },
+  watch: {
+    sourceData: {
+      handler(newVal) {
+        this.formatSourceData = newVal?.map((item) => {
+          return {
+            ...item,
+            label: this?.$t ? this?.$t(item.label) : item.label,
+          };
+        });
+      },
+      immediate: true,
     },
   },
   methods: {
