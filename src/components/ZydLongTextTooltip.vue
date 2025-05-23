@@ -8,6 +8,7 @@
       :placement="placement"
       theme="light"
       v-if="!disabled"
+      :popper-class="popperClass"
     >
       <p class="over-flow" style="cursor: pointer" @mouseenter="visibilityChange($event)">
         {{ text }}
@@ -38,6 +39,9 @@ export default {
       default: false,
       type: Boolean,
     },
+    popperClass: {
+      default: '',
+    }
   },
   data() {
     return {

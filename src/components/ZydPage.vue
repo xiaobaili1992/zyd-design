@@ -350,6 +350,9 @@ export default {
     },
     commonFn(item, type, value) {
       item?.events?.[type]?.(value);
+      if(["input", "change"].includes(type)){
+        this.$emit("onChange", JSON.parse(JSON.stringify(this.searchValues)))
+      }
     },
     tableCommonFn(events, type, value, value2, value3, value4) {
       events?.[type]?.(value, value2, value3, value4);
